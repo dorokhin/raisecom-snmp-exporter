@@ -256,7 +256,7 @@ ROS отдаёт пустые таблицы трансиверов, поэто�
 
 Смысл колонок приватной PoE-таблицы Raisecom выведен из данных: публичного MIB нет. Измерения сверены с
 `show poe interface` / `show poe pse` и стандартным MIB, настройки определены переключением через CLI
-(подробно в [mibs/README.md](mibs/README.md)).
+(подробно в [mibs/README.Ru.md](mibs/README.Ru.md)).
 
 ## Безопасность
 
@@ -308,7 +308,7 @@ snmpbulkwalk -v2c -c public -On -Oe -Ot -Cc <switch> 1.3.6.1.4.1.8886.6.1.51 >> 
 - `mibs/modules/`: тот же набор объектов, разложенный по модулям, как обычно поставляют вендоры.
 
 Оба варианта генерируются `mibs/gen_mibs.py` и проверяются `make mibcheck`. Подробности и отличия от вендорских
-MIB описаны в [mibs/README.md](mibs/README.md). Сам экспортер MIB не загружает, OID зашиты в код.
+MIB описаны в [mibs/README.Ru.md](mibs/README.Ru.md). Сам экспортер MIB не загружает, OID зашиты в код.
 
 ## Лицензия
 
