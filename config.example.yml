@@ -1,0 +1,34 @@
+# raisecom_exporter configuration.
+#
+# Prometheus calls /probe?target=<switch>&auth=<auth name>&module=<module name>.
+# `auth` may be omitted when only one auth is defined; `module` defaults to "default".
+# Secrets can reference environment variables as ${NAME}.
+
+auths:
+  public_v2:
+    version: 2
+    community: public
+
+  # SNMPv3 example: create a matching read-only USM user on the switch first,
+  # export SNMP_AUTH_PASSWORD / SNMP_PRIV_PASSWORD and uncomment.
+  # secure_v3:
+  #   version: 3
+  #   username: monitor
+  #   security_level: authPriv
+  #   auth_protocol: SHA
+  #   auth_password: ${SNMP_AUTH_PASSWORD}
+  #   priv_protocol: AES
+  #   priv_password: ${SNMP_PRIV_PASSWORD}
+
+modules:
+  # Everything: system, interfaces, poe, sfp.
+  default:
+    timeout: 5s          # per SNMP request
+    retries: 1
+    max_repetitions: 25
+
+  # PoE only, without the class column (the agent spends ~80 ms per powered
+  # port answering it), for frequent scraping of power draw.
+  poe_fast:
+    collectors: [poe]
+    poe_class: false

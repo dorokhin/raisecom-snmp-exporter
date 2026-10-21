@@ -1,0 +1,37 @@
+global:
+  scrape_interval: 30s
+
+rule_files: []
+
+scrape_configs:
+  # One target per switch; the exporter is reached through relabelling.
+  - job_name: raisecom
+    scrape_interval: 30s
+    scrape_timeout: 15s
+    metrics_path: /probe
+    params:
+      module: [default]
+      auth: [public_v2]
+    file_sd_configs:
+      # Any *.yml here; copy targets/raisecom.yml.example to targets/raisecom.yml and list your switches.
+      - files: [/etc/prometheus/targets/*.yml]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: raisecom-snmp-exporter:9840
+
+  # Optional: scrape power draw more often without the slower collectors.
+  # - job_name: raisecom_poe
+  #   scrape_interval: 10s
+  #   scrape_timeout: 8s
+  #   metrics_path: /probe
+  #   params: {module: [poe_fast], auth: [public_v2]}
+  #   file_sd_configs: [{files: [/etc/prometheus/targets/*.yml]}]
+  #   relabel_configs: (same as above)
+
+  - job_name: raisecom_exporter
+    static_configs:
+      - targets: [raisecom-snmp-exporter:9840]

@@ -1,0 +1,4 @@
+/bin/
+/config.yml
+/deploy/prometheus/targets/raisecom.yml
+/deploy/.env

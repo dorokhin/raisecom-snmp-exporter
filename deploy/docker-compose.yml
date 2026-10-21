@@ -1,0 +1,79 @@
+# Complete example: raisecom-snmp-exporter + Prometheus + Grafana with the dashboard provisioned.
+#
+#   cd deploy
+#   cp .env.example .env                                            # optional: credentials, ports, image tag
+#   cp prometheus/targets/raisecom.yml.example prometheus/targets/raisecom.yml   # list your switches
+#   docker compose up -d
+#
+# Grafana: http://localhost:3000, Prometheus: http://localhost:9090, exporter: http://localhost:9840
+# Every setting has a default, so the stack also starts without .env.
+# To build the exporter from source instead of pulling it:
+#   docker compose -f docker-compose.yml -f docker-compose.build.yml up -d --build
+
+services:
+  raisecom-snmp-exporter:
+    image: andrewpinkerton/raisecom-snmp-exporter:${RAISECOM_EXPORTER_TAG:-latest}
+    restart: unless-stopped
+    command:
+      - --config.file=/etc/raisecom_exporter/config.yml
+      - --log.level=${EXPORTER_LOG_LEVEL:-info}
+    environment:
+      # Referenced as ${...} from raisecom/config.yml.
+      SNMP_COMMUNITY: ${SNMP_COMMUNITY:-public}
+      SNMP_AUTH_PASSWORD: ${SNMP_AUTH_PASSWORD:-}
+      SNMP_PRIV_PASSWORD: ${SNMP_PRIV_PASSWORD:-}
+    volumes:
+      - ./raisecom/config.yml:/etc/raisecom_exporter/config.yml:ro
+    ports:
+      - "${EXPORTER_PORT:-9840}:9840"
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    restart: unless-stopped
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=${PROMETHEUS_RETENTION:-30d}
+      - --web.enable-lifecycle          # allows POST /-/reload after editing prometheus.yml
+    volumes:
+      - ./prometheus:/etc/prometheus:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    depends_on:
+      - raisecom-snmp-exporter
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  grafana:
+    image: grafana/grafana:12.1.0
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/raisecom.json
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      TZ: ${TZ:-UTC}
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ../grafana:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    depends_on:
+      prometheus:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  prometheus-data:
+  grafana-data:

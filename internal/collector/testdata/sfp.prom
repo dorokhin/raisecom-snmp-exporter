@@ -1,0 +1,113 @@
+# HELP raisecom_sfp_alarm_status DDM alarm status: 0 unknown, 1 normal, 2 high alarm, 3 high warning, 4 low alarm, 5 low warning.
+# TYPE raisecom_sfp_alarm_status gauge
+raisecom_sfp_alarm_status{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",param="bias_current_amperes",port="25"} 1
+raisecom_sfp_alarm_status{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",param="rx_power_dbm",port="25"} 4
+raisecom_sfp_alarm_status{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",param="temperature_celsius",port="25"} 1
+raisecom_sfp_alarm_status{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",param="tx_power_dbm",port="25"} 1
+raisecom_sfp_alarm_status{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",param="voltage_volts",port="25"} 1
+raisecom_sfp_alarm_status{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",param="bias_current_amperes",port="26"} 1
+raisecom_sfp_alarm_status{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",param="rx_power_dbm",port="26"} 4
+raisecom_sfp_alarm_status{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",param="temperature_celsius",port="26"} 1
+raisecom_sfp_alarm_status{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",param="tx_power_dbm",port="26"} 1
+raisecom_sfp_alarm_status{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",param="voltage_volts",port="26"} 1
+raisecom_sfp_alarm_status{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",param="bias_current_amperes",port="28"} 1
+raisecom_sfp_alarm_status{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",param="rx_power_dbm",port="28"} 4
+raisecom_sfp_alarm_status{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",param="temperature_celsius",port="28"} 1
+raisecom_sfp_alarm_status{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",param="tx_power_dbm",port="28"} 1
+raisecom_sfp_alarm_status{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",param="voltage_volts",port="28"} 1
+# HELP raisecom_sfp_bias_current_amperes Laser bias current.
+# TYPE raisecom_sfp_bias_current_amperes gauge
+raisecom_sfp_bias_current_amperes{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",port="25"} 0.025772
+raisecom_sfp_bias_current_amperes{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",port="26"} 0.029072
+raisecom_sfp_bias_current_amperes{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",port="28"} 0.0312
+# HELP raisecom_sfp_ddm_enabled 1 when digital diagnostics monitoring is enabled globally on the switch.
+# TYPE raisecom_sfp_ddm_enabled gauge
+raisecom_sfp_ddm_enabled 1
+# HELP raisecom_sfp_info Installed transceiver; value is always 1.
+# TYPE raisecom_sfp_info gauge
+raisecom_sfp_info{ddm_supported="false",description="spare-27",distance_meters="",ifindex="2082476059",ifname="gigaethernet1/1/27",media="copper",part_number="",port="27",serial="",type="unknown",vendor="",wavelength_nm=""} 1
+raisecom_sfp_info{ddm_supported="true",description="",distance_meters="10000",ifindex="2082476057",ifname="gigaethernet1/1/25",media="single-mode-km",part_number="TC-NW-10-27-10-D",port="25",serial="SFPSN0000002",type="sfp",vendor="TELCON",wavelength_nm="1270"} 1
+raisecom_sfp_info{ddm_supported="true",description="uplink-26",distance_meters="10000",ifindex="2082476058",ifname="gigaethernet1/1/26",media="single-mode-km",part_number="TC-NW-10-27-10-D",port="26",serial="SFPSN0000001",type="sfp",vendor="TELCON",wavelength_nm="1270"} 1
+raisecom_sfp_info{ddm_supported="true",description="uplink-28",distance_meters="10000",ifindex="2082476060",ifname="gigaethernet1/1/28",media="single-mode-km",part_number="SFP-WDM.DDM.3.10",port="28",serial="SFPSN00003",type="sfp",vendor="OptiCin",wavelength_nm="1310"} 1
+# HELP raisecom_sfp_rx_power_dbm Receive optical power.
+# TYPE raisecom_sfp_rx_power_dbm gauge
+raisecom_sfp_rx_power_dbm{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",port="25"} -40
+raisecom_sfp_rx_power_dbm{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",port="26"} -40
+raisecom_sfp_rx_power_dbm{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",port="28"} -40
+# HELP raisecom_sfp_temperature_celsius Transceiver temperature.
+# TYPE raisecom_sfp_temperature_celsius gauge
+raisecom_sfp_temperature_celsius{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",port="25"} 25.41
+raisecom_sfp_temperature_celsius{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",port="26"} 29.414
+raisecom_sfp_temperature_celsius{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",port="28"} 44.5
+# HELP raisecom_sfp_threshold DDM alarm/warning threshold, in the unit of the metric named by param.
+# TYPE raisecom_sfp_threshold gauge
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_alarm",param="bias_current_amperes",port="25"} 0.1
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_alarm",param="rx_power_dbm",port="25"} 2.013
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_alarm",param="temperature_celsius",port="25"} 100
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_alarm",param="tx_power_dbm",port="25"} 3.01
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_alarm",param="voltage_volts",port="25"} 3.6
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_warning",param="bias_current_amperes",port="25"} 0.09
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_warning",param="rx_power_dbm",port="25"} 1.003
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_warning",param="temperature_celsius",port="25"} 90
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_warning",param="tx_power_dbm",port="25"} 2.013
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="high_warning",param="voltage_volts",port="25"} 3.5
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_alarm",param="bias_current_amperes",port="25"} 0.001
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_alarm",param="rx_power_dbm",port="25"} -21.938
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_alarm",param="temperature_celsius",port="25"} -10
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_alarm",param="tx_power_dbm",port="25"} -8.996
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_alarm",param="voltage_volts",port="25"} 2.9
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_warning",param="bias_current_amperes",port="25"} 0.002
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_warning",param="rx_power_dbm",port="25"} -19.956
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_warning",param="temperature_celsius",port="25"} -5
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_warning",param="tx_power_dbm",port="25"} -7.986
+raisecom_sfp_threshold{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",level="low_warning",param="voltage_volts",port="25"} 3
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_alarm",param="bias_current_amperes",port="26"} 0.1
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_alarm",param="rx_power_dbm",port="26"} 2.013
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_alarm",param="temperature_celsius",port="26"} 100
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_alarm",param="tx_power_dbm",port="26"} 3.01
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_alarm",param="voltage_volts",port="26"} 3.6
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_warning",param="bias_current_amperes",port="26"} 0.09
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_warning",param="rx_power_dbm",port="26"} 1.003
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_warning",param="temperature_celsius",port="26"} 90
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_warning",param="tx_power_dbm",port="26"} 2.013
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="high_warning",param="voltage_volts",port="26"} 3.5
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_alarm",param="bias_current_amperes",port="26"} 0.001
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_alarm",param="rx_power_dbm",port="26"} -21.938
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_alarm",param="temperature_celsius",port="26"} -10
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_alarm",param="tx_power_dbm",port="26"} -8.996
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_alarm",param="voltage_volts",port="26"} 2.9
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_warning",param="bias_current_amperes",port="26"} 0.002
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_warning",param="rx_power_dbm",port="26"} -19.956
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_warning",param="temperature_celsius",port="26"} -5
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_warning",param="tx_power_dbm",port="26"} -7.986
+raisecom_sfp_threshold{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",level="low_warning",param="voltage_volts",port="26"} 3
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_alarm",param="bias_current_amperes",port="28"} 0.09
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_alarm",param="rx_power_dbm",port="28"} -2.993
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_alarm",param="temperature_celsius",port="28"} 90
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_alarm",param="tx_power_dbm",port="28"} -1.992
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_alarm",param="voltage_volts",port="28"} 3.6
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_warning",param="bias_current_amperes",port="28"} 0.08
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_warning",param="rx_power_dbm",port="28"} -3.99
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_warning",param="temperature_celsius",port="28"} 85
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_warning",param="tx_power_dbm",port="28"} -2.993
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="high_warning",param="voltage_volts",port="28"} 3.5
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_alarm",param="bias_current_amperes",port="28"} 0.001
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_alarm",param="rx_power_dbm",port="28"} -21.938
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_alarm",param="temperature_celsius",port="28"} 0
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_alarm",param="tx_power_dbm",port="28"} -9.956
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_alarm",param="voltage_volts",port="28"} 2.9
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_warning",param="bias_current_amperes",port="28"} 0.002
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_warning",param="rx_power_dbm",port="28"} -20.969
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_warning",param="temperature_celsius",port="28"} 3
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_warning",param="tx_power_dbm",port="28"} -8.996
+raisecom_sfp_threshold{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",level="low_warning",param="voltage_volts",port="28"} 3
+# HELP raisecom_sfp_tx_power_dbm Transmit optical power.
+# TYPE raisecom_sfp_tx_power_dbm gauge
+raisecom_sfp_tx_power_dbm{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",port="25"} -1.992
+raisecom_sfp_tx_power_dbm{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",port="26"} -1.992
+raisecom_sfp_tx_power_dbm{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",port="28"} -4.271
+# HELP raisecom_sfp_voltage_volts Supply voltage.
+# TYPE raisecom_sfp_voltage_volts gauge
+raisecom_sfp_voltage_volts{description="",ifindex="2082476057",ifname="gigaethernet1/1/25",port="25"} 3.279
+raisecom_sfp_voltage_volts{description="uplink-26",ifindex="2082476058",ifname="gigaethernet1/1/26",port="26"} 3.274
+raisecom_sfp_voltage_volts{description="uplink-28",ifindex="2082476060",ifname="gigaethernet1/1/28",port="28"} 3.282

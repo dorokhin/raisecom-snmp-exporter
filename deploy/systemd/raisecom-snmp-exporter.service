@@ -1,0 +1,49 @@
+# Install:
+#   install -m 0755 bin/raisecom_exporter /usr/local/bin/
+#   install -D -m 0644 config.example.yml /etc/raisecom_exporter/config.yml
+#   install -m 0644 deploy/systemd/raisecom-snmp-exporter.service /etc/systemd/system/
+#   # secrets referenced as ${VAR} in config.yml go here (root-only):
+#   install -m 0600 /dev/null /etc/default/raisecom_exporter
+#   systemctl daemon-reload && systemctl enable --now raisecom-snmp-exporter
+[Unit]
+Description=Prometheus exporter for Raisecom ROS switches
+Documentation=file:///usr/local/share/doc/raisecom_exporter/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+EnvironmentFile=-/etc/default/raisecom_exporter
+ExecStart=/usr/local/bin/raisecom_exporter \
+  --config.file=/etc/raisecom_exporter/config.yml \
+  --web.listen-address=:9840
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target

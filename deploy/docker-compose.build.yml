@@ -1,0 +1,9 @@
+# Override that builds the exporter from the repository instead of pulling it from Docker Hub:
+#   docker compose -f docker-compose.yml -f docker-compose.build.yml up -d --build
+services:
+  raisecom-snmp-exporter:
+    image: raisecom-snmp-exporter:local
+    build:
+      context: ..
+      args:
+        VERSION: local

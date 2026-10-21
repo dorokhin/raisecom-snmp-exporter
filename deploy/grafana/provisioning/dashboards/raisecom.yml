@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: raisecom
+    folder: Network
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

@@ -1,0 +1,5 @@
+# Switches to probe. Copy to raisecom.yml and list your switches there. Extra labels are attached to every series of the target.
+- targets:
+    - 192.0.2.10
+  labels:
+    site: main

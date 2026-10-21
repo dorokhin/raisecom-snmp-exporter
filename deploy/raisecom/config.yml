@@ -1,0 +1,29 @@
+# raisecom-snmp-exporter configuration for the compose example.
+# ${VAR} values come from the container environment (see docker-compose.yml and .env.example).
+
+auths:
+  public_v2:
+    version: 2
+    community: ${SNMP_COMMUNITY}
+
+  # SNMPv3: create a matching read-only USM user on the switch, set SNMP_AUTH_PASSWORD and
+  # SNMP_PRIV_PASSWORD in .env, uncomment, and use auth=secure_v3 in prometheus/prometheus.yml.
+  # secure_v3:
+  #   version: 3
+  #   username: monitor
+  #   security_level: authPriv
+  #   auth_protocol: SHA
+  #   auth_password: ${SNMP_AUTH_PASSWORD}
+  #   priv_protocol: AES
+  #   priv_password: ${SNMP_PRIV_PASSWORD}
+
+modules:
+  default:
+    timeout: 5s
+    retries: 1
+    max_repetitions: 25
+
+  # PoE only, without the PoE class column, for frequent scraping of power draw.
+  poe_fast:
+    collectors: [poe]
+    poe_class: false

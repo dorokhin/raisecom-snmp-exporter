@@ -1,0 +1,50 @@
+# HELP raisecom_cpu_utilization_ratio Total CPU utilization averaged over period.
+# TYPE raisecom_cpu_utilization_ratio gauge
+raisecom_cpu_utilization_ratio{period="10m"} 0.07
+raisecom_cpu_utilization_ratio{period="1m"} 0.04
+raisecom_cpu_utilization_ratio{period="1s"} 0.08
+raisecom_cpu_utilization_ratio{period="2h"} 0.04
+raisecom_cpu_utilization_ratio{period="5s"} 0.31
+# HELP raisecom_device_info Device identification; value is always 1.
+# TYPE raisecom_device_info gauge
+raisecom_device_info{bootrom="2.0.24",hardware="A.01",mac="02:00:00:00:00:01",model="ISCOM2624G-4GE-PWR-AC",serial="SN0000000000000000000001",software="3.60.311(Compiled Mar 25 2020 18:40:44)",sysname="switch-1"} 1
+# HELP raisecom_fan_speed_level Current fan speed level selected by temperature.
+# TYPE raisecom_fan_speed_level gauge
+raisecom_fan_speed_level{fan="1"} 1
+raisecom_fan_speed_level{fan="2"} 1
+raisecom_fan_speed_level{fan="3"} 1
+raisecom_fan_speed_level{fan="4"} 1
+# HELP raisecom_fan_speed_rpm Fan speed.
+# TYPE raisecom_fan_speed_rpm gauge
+raisecom_fan_speed_rpm{fan="1"} 4620
+raisecom_fan_speed_rpm{fan="2"} 4620
+raisecom_fan_speed_rpm{fan="3"} 4560
+raisecom_fan_speed_rpm{fan="4"} 4680
+# HELP raisecom_fan_up 1 when the fan reports normal operation.
+# TYPE raisecom_fan_up gauge
+raisecom_fan_up{fan="1"} 1
+raisecom_fan_up{fan="2"} 1
+raisecom_fan_up{fan="3"} 1
+raisecom_fan_up{fan="4"} 1
+# HELP raisecom_memory_available_bytes Available RAM.
+# TYPE raisecom_memory_available_bytes gauge
+raisecom_memory_available_bytes 6.7887104e+07
+# HELP raisecom_memory_total_bytes Total RAM.
+# TYPE raisecom_memory_total_bytes gauge
+raisecom_memory_total_bytes 2.58486272e+08
+# HELP raisecom_temperature_celsius Board temperature.
+# TYPE raisecom_temperature_celsius gauge
+raisecom_temperature_celsius 38
+# HELP raisecom_temperature_max_celsius Highest board temperature since boot.
+# TYPE raisecom_temperature_max_celsius gauge
+raisecom_temperature_max_celsius 47
+# HELP raisecom_temperature_min_celsius Lowest board temperature since boot.
+# TYPE raisecom_temperature_min_celsius gauge
+raisecom_temperature_min_celsius 31
+# HELP raisecom_temperature_threshold_celsius Configured temperature alarm thresholds.
+# TYPE raisecom_temperature_threshold_celsius gauge
+raisecom_temperature_threshold_celsius{type="high"} 90
+raisecom_temperature_threshold_celsius{type="low"} -10
+# HELP raisecom_uptime_seconds Time since the agent (re)started (sysUpTime).
+# TYPE raisecom_uptime_seconds gauge
+raisecom_uptime_seconds 7.861255e+06
