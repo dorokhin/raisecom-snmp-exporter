@@ -8,6 +8,8 @@ number of switches, and Prometheus passes the address in `/probe?target=`.
 
 Tested on **ISCOM2624G-4GE-PWR-AC**, ROS 3.60.311 (ROS_5.2.1_20200325).
 
+![Grafana dashboard: device overview, PoE budget and per-port PoE table](images/screenshot-02.png)
+
 ## What it collects
 
 | Collector    | Source                                              | Provides                                                              |
