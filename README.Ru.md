@@ -2,11 +2,13 @@
 
 [English](README.md) | **Русский**
 
-Prometheus-экспортер для коммутаторов Raisecom на ROS 5.x (серия ISCOM2600G) с упором на детальные PoE-метрики.
+Prometheus-экспортер для коммутаторов Raisecom серии ISCOM2600G под управлением ROS (Raisecom Operating System)
+с упором на детальные PoE-метрики.
 Собирает данные по SNMP (v2c/v3), работает в multi-target режиме как `snmp_exporter`: один экспортер опрашивает
 любое число коммутаторов, Prometheus передаёт адрес в `/probe?target=`.
 
-Проверено на **ISCOM2624G-4GE-PWR-AC**, ROS 3.60.311 (ROS_5.2.1_20200325).
+Проверено на **ISCOM2624G-4GE-PWR-AC**, прошивка 3.60.311 на ROS 5.2.1. Другие модели ISCOM2600G и версии ROS 5.x,
+скорее всего, тоже работают, но не проверялись.
 
 ![Дашборд Grafana: обзор устройства, бюджет PoE и таблица PoE по портам](images/screenshot-02.png)
 

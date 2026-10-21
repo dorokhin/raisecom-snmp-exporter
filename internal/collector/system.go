@@ -11,7 +11,7 @@ import (
 	"raisecom-snmp-exporter/internal/snmp"
 )
 
-// OIDs below were verified on ISCOM2624G-4GE-PWR-AC, ROS 3.60.311. On this
+// OIDs below were verified on ISCOM2624G-4GE-PWR-AC, software 3.60.311 (ROS 5.2.1). On this
 // firmware the RAISECOM-SYSTEM-MIB scalars sit one level higher than the MIB
 // file says (e.g. memory at raisecomMemory.N.0, not raisecomMemoryScalarGroup.N.0).
 const (

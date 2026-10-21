@@ -9,8 +9,9 @@ Outputs:
 
 Both variants are rendered from the same objects below, so a descriptor always
 names the same OID in either variant. OIDs and types follow what an
-ISCOM2624G-4GE-PWR-AC running ROS 3.60.311 actually returns; where that differs
-from Raisecom's published MIBs the device wins and the DESCRIPTION says so.
+ISCOM2624G-4GE-PWR-AC running software 3.60.311 (ROS 5.2.1) actually returns;
+where that differs from Raisecom's published MIBs the device wins and the
+DESCRIPTION says so.
 """
 import os
 import re
@@ -20,9 +21,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REVISION = "202610210000Z"
 ORG = "raisecom-snmp-exporter project (unofficial, not a Raisecom publication)"
 CONTACT = "See README.md in the raisecom-snmp-exporter repository."
-RECON = ("Reconstructed from data returned by ISCOM2624G-4GE-PWR-AC, ROS 3.60.311; "
+RECON = ("Reconstructed from data returned by ISCOM2624G-4GE-PWR-AC, software 3.60.311 (ROS 5.2.1); "
          "Raisecom publishes no MIB for this object.")
-DEVICE_NOTE = "Position verified on ROS 3.60.311, where it differs from the published Raisecom MIB."
+DEVICE_NOTE = "Position verified on software 3.60.311 (ROS 5.2.1), where it differs from the published Raisecom MIB."
 
 # --------------------------------------------------------------------------- model
 
@@ -111,7 +112,7 @@ tc(base, "EnableVar", "INTEGER { enable(1), disable(2) }", "Enable or disable a 
 
 # RAISECOM-SYSTEM-MIB ----------------------------------------------------------
 sysm = module("RAISECOM-SYSTEM-MIB", "raisecomSystem", "raisecomAgent", 1,
-              "CPU, memory and temperature of Raisecom ROS devices, laid out as ROS 3.60.311 serves them.")
+              "CPU, memory and temperature of Raisecom ROS devices, laid out as software 3.60.311 (ROS 5.2.1) serves them.")
 oid(sysm, "raisecomCpu", "raisecomSystem", 1)
 oid(sysm, "raisecomCPUTableGroup", "raisecomCpu", 5)
 oid(sysm, "raisecomCPUUtilizationGroup", "raisecomCPUTableGroup", 1)
@@ -129,7 +130,7 @@ for arc, name, syn, acc, units, desc in [
     (1, "raisecomMemoryTotal", "Integer32", "read-only", "bytes", "Total memory of the system."),
     (2, "raisecomMemoryAvailable", "Integer32", "read-only", "bytes", "Available memory of the system."),
     (3, "raisecomMemoryUtil", "Integer32 (0..100)", "read-only", "percent",
-     "Current memory utilization. The published MIB types this OCTET STRING; ROS 3.60.311 returns INTEGER."),
+     "Current memory utilization. The published MIB types this OCTET STRING; software 3.60.311 (ROS 5.2.1) returns INTEGER."),
     (4, "raisecomMemoryTrapEnable", "EnableVar", "read-write", None, "Whether the memory trap is enabled."),
     (5, "raisecomMemoryThrshd", "Integer32 (0..100)", "read-write", "percent", "Memory utilization alarm threshold."),
     (6, "raisecomMemoryThrshdRecover", "Integer32 (0..100)", "read-write", "percent",
@@ -184,7 +185,7 @@ opt = module("RAISECOM-OPTICAL-TRANSCEIVER-MIB", "raisecomOpticalTransceiver", "
              "Optical transceiver information and digital diagnostics (DDM) of Raisecom ROS devices.")
 tc(opt, "OpticalParameterType",
    "INTEGER { transceiverTemperature(1), txBiasCurrent(2), txPower(3), rxPower(4), supplyVoltage(5) }",
-   "Monitored DDM parameter. The published Raisecom MIB names value 5 laserTemperature; ROS 3.60.311 "
+   "Monitored DDM parameter. The published Raisecom MIB names value 5 laserTemperature; software 3.60.311 (ROS 5.2.1) "
    "returns the 3.3 V supply voltage there (about 3300 mV with 2900..3600 mV thresholds).")
 tc(opt, "OpticalParameterValue", "Integer32 (-1000000 | -40000..6553600)",
    "DDM value in thousandths of the base unit: transceiverTemperature in millidegrees Celsius, "
@@ -227,12 +228,12 @@ for arc, name, syn, desc, units in [
     (14, "BRMin", "Integer32", "Minimum bit rate.", "Mbps"),
     (15, "WavelengthContrl", SUP, "Whether wavelength control is supported.", None),
     (16, "Wavelength", "Integer32", "Nominal laser wavelength. The published MIB says picometres; "
-                                    "ROS 3.60.311 returns nanometres (e.g. 1310).", "nm"),
+                                    "software 3.60.311 (ROS 5.2.1) returns nanometres (e.g. 1310).", "nm"),
     (17, "WaveTolerance", "Integer32", "Wavelength tolerance. The published MIB types this OCTET STRING; "
-                                       "ROS 3.60.311 returns INTEGER.", None),
+                                       "software 3.60.311 (ROS 5.2.1) returns INTEGER.", None),
     (18, "Compatibility", "OCTET STRING (SIZE (0..32))", "Compatibility code, e.g. 10GBASE-SR.", None),
     (19, "PowerDissipation", "INTEGER { unknown(0), p1W5(1), p2W5(2), p3W5(3), exceed(4) }",
-     "Power class. ROS 3.60.311 returns unknown(0) for SFPs.", None),
+     "Power class. software 3.60.311 (ROS 5.2.1) returns unknown(0) for SFPs.", None),
     (20, "CDR", SUP, "Whether the module has clock and data recovery.", None),
     (21, "RefClock", "INTEGER { required(1), notRequired(2) }", "Whether a reference clock is required.", None),
     (22, "TransmitterType", "INTEGER { vcsel850nm(1), vcsel1310nm(2), vcsel1550nm(3), fp1310nm(4), dfb1310nm(5), "
@@ -568,8 +569,8 @@ def needed_symbols(nodes, tcs, identity_parent, with_conf, single):
 HEADER = """-- {name}
 --
 -- Generated by mibs/gen_mibs.py; edit the generator, not this file.
--- Unofficial MIB for Raisecom ISCOM2600G switches (ROS 5.x), written from what
--- an ISCOM2624G-4GE-PWR-AC with ROS 3.60.311 actually returns. Objects marked
+-- Unofficial MIB for Raisecom ISCOM2600G switches, written from what
+-- an ISCOM2624G-4GE-PWR-AC with software 3.60.311 (ROS 5.2.1) actually returns. Objects marked
 -- "Reconstructed" have no published Raisecom MIB.
 --
 """

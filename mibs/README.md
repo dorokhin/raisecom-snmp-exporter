@@ -1,8 +1,8 @@
-# MIBs for Raisecom ISCOM2600G (ROS 5.x)
+# MIBs for Raisecom ISCOM2600G (software 3.60.311, ROS 5.2.1)
 
 **English** | [Русский](README.Ru.md)
 
-Unofficial MIBs written from what an **ISCOM2624G-4GE-PWR-AC running ROS 3.60.311** actually returns.
+Unofficial MIBs written from what an **ISCOM2624G-4GE-PWR-AC with software 3.60.311 (ROS 5.2.1)** actually returns.
 They cover every private table that `raisecom-snmp-exporter` reads, with all of their columns.
 
 | File | What it is |

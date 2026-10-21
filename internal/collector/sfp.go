@@ -121,7 +121,7 @@ func (sfpCollector) Collect(ctx context.Context, t *Target, ch chan<- prometheus
 		media, _ := cellInt(row, optMedia)
 		ddm, _ := cellInt(row, optDDM)
 		dist, _ := cellInt(row, optDistance)
-		// The MIB documents picometres, but ROS 5.x returns whole nanometres.
+		// The MIB documents picometres, but software 3.60.311 (ROS 5.2.1) returns whole nanometres.
 		wl, _ := cellInt(row, optWavelength)
 		ddmCapable[ifIndex] = ddm == 1
 		gauge(ch, sfpInfoDesc, 1, append(ports.Get(ifIndex).Labels(),

@@ -2,11 +2,13 @@
 
 **English** | [Русский](README.Ru.md)
 
-Prometheus exporter for Raisecom switches running ROS 5.x (ISCOM2600G series), focused on detailed PoE metrics.
+Prometheus exporter for Raisecom ISCOM2600G series switches running ROS (Raisecom Operating System), focused on
+detailed PoE metrics.
 It collects data over SNMP (v2c/v3) and works in multi-target mode like `snmp_exporter`: one exporter polls any
 number of switches, and Prometheus passes the address in `/probe?target=`.
 
-Tested on **ISCOM2624G-4GE-PWR-AC**, ROS 3.60.311 (ROS_5.2.1_20200325).
+Tested on **ISCOM2624G-4GE-PWR-AC**, software 3.60.311 on ROS 5.2.1. Other ISCOM2600G models and ROS 5.x versions
+are likely to work but have not been tested.
 
 ![Grafana dashboard: device overview, PoE budget and per-port PoE table](images/screenshot-02.png)
 

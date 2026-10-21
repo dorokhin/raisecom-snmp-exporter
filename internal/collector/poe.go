@@ -35,7 +35,7 @@ const (
 )
 
 // Raisecom private PoE tables (no public MIB). Column meanings were derived by
-// polling ISCOM2624G-4GE-PWR-AC (ROS 3.60.311) with live PDs and comparing with
+// polling ISCOM2624G-4GE-PWR-AC (software 3.60.311, ROS 5.2.1) with live PDs and comparing with
 // the standard MIB. Port rows are indexed by 1.<ifIndex>.
 const (
 	oidRcPoePortEntry = "1.3.6.1.4.1.8886.6.1.51.1.1"
